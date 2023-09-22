@@ -100,17 +100,29 @@ class StaticFramePublisher(Node):
         # base_link_to_omron.transform.rotation.y = -0.22
         # base_link_to_omron.transform.rotation.z = 0.0 
 
-        # base_link_to_laser = TransformStamped()
-        # base_link_to_laser.header.frame_id = 'base_link'
-        # base_link_to_laser.header.stamp = self.get_clock().now().to_msg()
-        # base_link_to_laser.child_frame_id = 'laser'
-        # base_link_to_laser.transform.translation.x = 0.05
-        # base_link_to_laser.transform.translation.y = 0.0
-        # base_link_to_laser.transform.translation.z = 0.35
-        # base_link_to_laser.transform.rotation.w = 0.0
-        # base_link_to_laser.transform.rotation.x = 1.0
-        # base_link_to_laser.transform.rotation.y = 0.0
-        # base_link_to_laser.transform.rotation.z = 0.0          
+        base_link_to_front_laser = TransformStamped()
+        base_link_to_front_laser.header.frame_id = 'base_link'
+        base_link_to_front_laser.header.stamp = self.get_clock().now().to_msg()
+        base_link_to_front_laser.child_frame_id = 'front_laser'
+        base_link_to_front_laser.transform.translation.x = 0.185
+        base_link_to_front_laser.transform.translation.y = 0.0
+        base_link_to_front_laser.transform.translation.z = 0.185
+        base_link_to_front_laser.transform.rotation.w = 1.0
+        base_link_to_front_laser.transform.rotation.x = 0.0
+        base_link_to_front_laser.transform.rotation.y = 0.0
+        base_link_to_front_laser.transform.rotation.z = 0.0        
+
+        base_link_to_back_laser = TransformStamped()
+        base_link_to_back_laser.header.frame_id = 'base_link'
+        base_link_to_back_laser.header.stamp = self.get_clock().now().to_msg()
+        base_link_to_back_laser.child_frame_id = 'back_laser'
+        base_link_to_back_laser.transform.translation.x = -0.185
+        base_link_to_back_laser.transform.translation.y = 0.0
+        base_link_to_back_laser.transform.translation.z = 0.185
+        base_link_to_back_laser.transform.rotation.w = 0.0
+        base_link_to_back_laser.transform.rotation.x = 0.0
+        base_link_to_back_laser.transform.rotation.y = 0.0
+        base_link_to_back_laser.transform.rotation.z = 1.0            
 
         return(
             map_to_odom,
@@ -120,7 +132,8 @@ class StaticFramePublisher(Node):
             base_link_to_omron_back,
             # base_link_to_rslidar,
             # base_link_to_omron,
-            # base_link_to_laser,
+            base_link_to_front_laser,
+            base_link_to_back_laser,
             
         )
 

@@ -6,10 +6,10 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
             package='pointcloud_to_laserscan', executable='pointcloud_to_laserscan_node',
-            remappings=[('cloud_in', '/pointcloud2_xyzi'),
-                        ('scan', '/scan')],
+            remappings=[('cloud_in', '/front/pointcloud2_xyzi'),
+                        ('scan', '/front/scan')],
             parameters=[{
-                'target_frame': 'laser',
+                'target_frame': 'front_laser',
                 'transform_tolerance': 0.01,
                 'min_height': -0.2,
                 'max_height': 0.3,
